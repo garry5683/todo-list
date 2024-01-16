@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { CommonService } from './services/common.service';
+import { AddDataComponent } from './components/add-data/add-data.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +13,31 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'demo1';
+  displayedColumns: string[] = ['topic', 'explanation'];
+  dataSource = new MatTableDataSource([]);
+
+  constructor(
+    private commonservice: CommonService,
+    public dialog: MatDialog,
+) { }
+
+  ngOnInit() {
+    this.commonservice.topicDtls().subscribe((result: any) => {
+      console.log(result)
+      this.dataSource=new MatTableDataSource(result);
+    })
+  }
+
+  addTask(){
+    const dialogRef = this.dialog.open(AddDataComponent, {
+      width:  "75%",
+      height: "75%"  
+    })
+  }
+
+  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
