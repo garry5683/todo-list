@@ -33,6 +33,12 @@ export class AppComponent {
       width:  "75%",
       height: "75%"  
     })
+    dialogRef.afterClosed().subscribe(result1 => {
+      this.commonservice.topicDtls().subscribe((result: any) => {
+        console.log(result)
+        this.dataSource=new MatTableDataSource(result);
+      })
+    });
   }
 
   
