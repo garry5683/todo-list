@@ -1,28 +1,5 @@
 {
   "topics": [
-    {
-      "id": "e18c",
-      "topic": "ggg",
-      "explanation": [
-        {
-          "subtopic": "ggg",
-          "explanation": "gegergr"
-        }
-      ]
-    },
-    {
-      "id": "c86d",
-      "topic": "bbb",
-      "explanation": [
-        {
-          "subtopic": "bbb",
-          "explanation": "sfsfsdf"
-        },
-        {
-          "subtopic": "sdfsdf",
-          "explanation": "sdfsdf"
-        }
-      ]
-    }
+
   ]
 }
