@@ -4,7 +4,10 @@ import { CommonService } from './services/common.service';
 import { AddDataComponent } from './components/add-data/add-data.component';
 import { MatDialog } from '@angular/material/dialog';
 
-
+export interface UserData {
+  topic: string;
+  explanation: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -21,11 +24,35 @@ export class AppComponent {
     public dialog: MatDialog,
 ) { }
 
-  ngOnInit() {
+ngOnInit() {
     this.commonservice.topicDtls().subscribe((result: any) => {
       console.log(result)
       this.dataSource=new MatTableDataSource(result);
+      this.dataSource.filterPredicate = 
+      (data: UserData, filtersJson: string) => {
+          const matchFilter: any[] = [];
+          const filters = JSON.parse(filtersJson);
+          filters.forEach((filter: { id: string; value: string; }) => {
+            const val =  data['topic'] === null ? '' :  data['topic'];
+            matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
+          });
+            return matchFilter.every(Boolean);
+        };
+    
     })
+  }
+
+  applyFilter(event: Event) {
+    const tableFilters = [];
+    tableFilters.push({
+      id: 'topic',
+      value: (event.target as HTMLInputElement).value
+    });
+    this.dataSource.filter = JSON.stringify(tableFilters);
+  }
+
+  splitfunc(val:any){
+    return val.split("|")
   }
 
   addTask(){
@@ -33,17 +60,12 @@ export class AppComponent {
       width:  "75%",
       height: "75%"  
     })
+
     dialogRef.afterClosed().subscribe(result1 => {
       this.commonservice.topicDtls().subscribe((result: any) => {
-        console.log(result)
         this.dataSource=new MatTableDataSource(result);
       })
     });
   }
 
-  
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
 }

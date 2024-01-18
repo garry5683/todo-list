@@ -1,5 +1,90 @@
 {
   "topics": [
-
+    {
+      "id": "4729",
+      "topic": "Angular",
+      "explanation": [
+        {
+          "subtopic": "Angular",
+          "explanation": "Single page Application | Component based architecture | Supports two-way data binding | TypeScript | Large community and ecosystem | High performance | Mobile development"
+        }
+      ]
+    },
+    {
+      "id": "8323",
+      "topic": "Introduction",
+      "explanation": [
+        {
+          "subtopic": "Introduction",
+          "explanation": "Hello, I’m Garry David a frontend developer with 2 years of experience in developing user-friendly web applications using Angular."
+        },
+        {
+          "subtopic": "Projects",
+          "explanation": "In my previous role, I have worked on various projects such as Loan management Systems which digitalized the entire loan management process, smart form builder where the users can create their own forms and generate report, like the google forms and a collection app created using angular and cordova for mobile users."
+        },
+        {
+          "subtopic": "Additions",
+          "explanation": "I have also used tools and frameworks such as\nburp suite for penitration testing\nlighthouse for performance analysis and optimisation."
+        },
+        {
+          "subtopic": "Conclusion",
+          "explanation": "I’m always looking for opportunities to improve my skills and I’m currently looking for a new role as an Angular developer where I can apply my expertise and contribute to the success of the team and the company."
+        }
+      ]
+    },
+    {
+      "id": "da12",
+      "topic": "CTC",
+      "explanation": [
+        {
+          "subtopic": "Current",
+          "explanation": "340022 Per year | 3.4 LPA  | 28335 Per month"
+        },
+        {
+          "subtopic": "Expected",
+          "explanation": "6 LPA"
+        }
+      ]
+    },
+    {
+      "id": "59d4",
+      "topic": "jjj",
+      "explanation": [
+        {
+          "subtopic": "jjj",
+          "explanation": "bbb"
+        }
+      ]
+    },
+    {
+      "id": "101a",
+      "topic": "ii",
+      "explanation": [
+        {
+          "subtopic": "ii",
+          "explanation": "jjj"
+        }
+      ]
+    },
+    {
+      "id": "06f1",
+      "topic": "zzz",
+      "explanation": [
+        {
+          "subtopic": "zzz",
+          "explanation": "zzzz"
+        }
+      ]
+    },
+    {
+      "id": "fec0",
+      "topic": "jj",
+      "explanation": [
+        {
+          "subtopic": "jj",
+          "explanation": "knkjk"
+        }
+      ]
+    }
   ]
 }
