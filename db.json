@@ -45,46 +45,6 @@
           "explanation": "6 LPA"
         }
       ]
-    },
-    {
-      "id": "59d4",
-      "topic": "jjj",
-      "explanation": [
-        {
-          "subtopic": "jjj",
-          "explanation": "bbb"
-        }
-      ]
-    },
-    {
-      "id": "101a",
-      "topic": "ii",
-      "explanation": [
-        {
-          "subtopic": "ii",
-          "explanation": "jjj"
-        }
-      ]
-    },
-    {
-      "id": "06f1",
-      "topic": "zzz",
-      "explanation": [
-        {
-          "subtopic": "zzz",
-          "explanation": "zzzz"
-        }
-      ]
-    },
-    {
-      "id": "fec0",
-      "topic": "jj",
-      "explanation": [
-        {
-          "subtopic": "jj",
-          "explanation": "knkjk"
-        }
-      ]
     }
   ]
 }

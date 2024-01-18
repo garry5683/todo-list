@@ -26,19 +26,33 @@ export class AppComponent {
 
 ngOnInit() {
     this.commonservice.topicDtls().subscribe((result: any) => {
-      console.log(result)
       this.dataSource=new MatTableDataSource(result);
+      
+      // For Filtering from Starting point
       this.dataSource.filterPredicate = 
-      (data: UserData, filtersJson: string) => {
+        (data: UserData, filtersJson: string) => {
           const matchFilter: any[] = [];
           const filters = JSON.parse(filtersJson);
           filters.forEach((filter: { id: string; value: string; }) => {
             const val =  data['topic'] === null ? '' :  data['topic'];
-            matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
+            let filterval=val.split("").slice(0,filter.value.length).join("")
+            matchFilter.push(filterval.toLowerCase().includes(filter.value.toLowerCase()));
           });
             return matchFilter.every(Boolean);
         };
+
+        // For Filtering from any point
+        // this.dataSource.filterPredicate = 
+        // (data: UserData, filtersJson: string) => {
+        //   const matchFilter: any[] = [];
+        //   const filters = JSON.parse(filtersJson);
     
+        //   filters.forEach((filter: { id: string; value: string; }) => {
+        //     const val =  data['topic'] === null ? '' :  data['topic'];
+        //     matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
+        //   });
+        //     return matchFilter.every(Boolean);
+        // };
     })
   }
 
@@ -60,7 +74,7 @@ ngOnInit() {
       width:  "75%",
       height: "75%"  
     })
-
+    
     dialogRef.afterClosed().subscribe(result1 => {
       this.commonservice.topicDtls().subscribe((result: any) => {
         this.dataSource=new MatTableDataSource(result);
