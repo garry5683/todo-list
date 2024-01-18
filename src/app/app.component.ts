@@ -29,6 +29,7 @@ ngOnInit() {
       this.dataSource=new MatTableDataSource(result);
       
       // For Filtering from Starting point
+      
       this.dataSource.filterPredicate = 
         (data: UserData, filtersJson: string) => {
           const matchFilter: any[] = [];
@@ -42,6 +43,7 @@ ngOnInit() {
         };
 
         // For Filtering from any point
+        // 
         // this.dataSource.filterPredicate = 
         // (data: UserData, filtersJson: string) => {
         //   const matchFilter: any[] = [];
@@ -74,7 +76,7 @@ ngOnInit() {
       width:  "75%",
       height: "75%"  
     })
-    
+
     dialogRef.afterClosed().subscribe(result1 => {
       this.commonservice.topicDtls().subscribe((result: any) => {
         this.dataSource=new MatTableDataSource(result);
