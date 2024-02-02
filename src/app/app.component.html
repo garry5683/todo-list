@@ -1,4 +1,4 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+<!-- <div style="display: flex; flex-wrap: wrap; justify-content: center;">
   <mat-card style="width: 50em;">
     <mat-card-content>
 
@@ -51,4 +51,18 @@
 
     </mat-card-content>
   </mat-card>
-</div>
+</div> -->
+
+<mat-toolbar color="primary">
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-raised-button color="primary" routerLink="interview">Interview</button>
+
+  <button mat-raised-button color="primary" routerLink="price">Prices</button>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>

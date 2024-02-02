@@ -1,0 +1,54 @@
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <mat-card style="width: 50em;">
+      <mat-card-content>
+  
+        <div style="height: 25em; overflow: scroll;">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+            <ng-container matColumnDef="topic">
+              <th mat-header-cell *matHeaderCellDef> Topic </th>
+              <td mat-cell *matCellDef="let element" style="vertical-align: top;">
+                <mat-card-header>
+                  <mat-card-title>
+                    {{element.topic}}
+                  </mat-card-title>
+                </mat-card-header>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="explanation">
+              <th mat-header-cell *matHeaderCellDef> Explanation </th>
+              <td mat-cell *matCellDef="let element">
+                <div *ngFor="let topic of element.explanation">
+                  <mat-card-header>
+                    <mat-card-title>{{topic.subtopic}}</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <li *ngFor="let val of splitfunc(topic.explanation)"> {{val}} </li>
+                  </mat-card-content>
+                </div>
+              </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+            <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+          </table>
+        </div>
+  
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
+  
+        <div class="end">
+          <button mat-raised-button color="primary" (click)="addTask()">Add Topic</button>
+        </div>
+  
+      </mat-card-content>
+    </mat-card>
+  </div>

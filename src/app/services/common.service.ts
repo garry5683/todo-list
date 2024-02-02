@@ -12,8 +12,14 @@ export class CommonService {
   topicDtls(){
     return this.http.get(`http://localhost:3000/topics`);
   }
+  priceDtls(){
+    return this.http.get(`http://localhost:3000/prices`);
+  }
 
   topicDtlspost(data:any){
     return this.http.post(`http://localhost:3000/topics`,data);
+  }
+  PriceDtlspost(data:any){
+    return this.http.post(`http://localhost:3000/prices`,data);
   }
 }

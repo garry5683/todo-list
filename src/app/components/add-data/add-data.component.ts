@@ -9,8 +9,7 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./add-data.component.scss']
 })
 export class AddDataComponent {
-
-  
+ 
   constructor(
     private formBuilder: FormBuilder,
     private commonService:CommonService,
