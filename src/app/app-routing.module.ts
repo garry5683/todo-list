@@ -9,10 +9,10 @@ const routes: Routes = [
     path: 'interview',
     component: InterviewDashboardComponent
   },
-  {
-    path: 'price',
-    component: PriceDashboardComponent
-  },
+  // {
+  //   path: 'price',
+  //   component: PriceDashboardComponent
+  // },
 ];
 
 @NgModule({
