@@ -26,6 +26,7 @@ export class InterviewDashboardComponent {
 ngOnInit() {
     this.commonservice.topicDtls().subscribe((result: any) => {
       this.dataSource=new MatTableDataSource(result);
+      // this.dataSource=new MatTableDataSource(result['topics']);
       this.filterPredicatefunc()
     })
   }

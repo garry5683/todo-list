@@ -10,9 +10,11 @@ export class CommonService {
   constructor(      private http: HttpClient    ) { }
 
   topicDtls(){
+    // return this.http.get(`https://garry5683.github.io/angulad-note-db/db.json`);
     return this.http.get(`http://localhost:3000/topics`);
   }
   priceDtls(){
+    // return this.http.get(`https://garry5683.github.io/angulad-note-db/db.json`);
     return this.http.get(`http://localhost:3000/prices`);
   }
 

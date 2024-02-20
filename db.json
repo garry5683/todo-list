@@ -34,6 +34,16 @@
       "id": "3058",
       "Item": "Dust Bin With Cap",
       "Price": "195"
+    },
+    {
+      "id": "1988",
+      "Item": "Bucket 117",
+      "Price": "125"
+    },
+    {
+      "id": "e6b3",
+      "Item": "Mug 1000",
+      "Price": "20"
     }
   ],
   "topics": [
@@ -69,7 +79,7 @@
         },
         {
           "subtopic": "Main Soft Skills",
-          "explanation": "Good in understanding the client requirements\n Good at explaing the topics\nDebugging and finding solutions for problems"
+          "explanation": "Good in understanding the client requirements\n Good at explaing the topics\nDebugging and finding solutions for problems\nFast Learner"
         },
         {
           "subtopic": "Stressful Situations",
