@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonService } from '../../services/common.service';
 import { AddDataComponent } from '../../components/add-data/add-data.component';
@@ -15,7 +15,7 @@ export interface UserData {
   styleUrls: ['./interview-dashboard.component.scss']
 })
 export class InterviewDashboardComponent {
-  displayedColumns: string[] = [ 'explanation','topic'];
+  displayedColumns: string[] = [ 'explanation'];
   dataSource = new MatTableDataSource([]);
 
   constructor(
@@ -24,13 +24,20 @@ export class InterviewDashboardComponent {
 ) { }
 
 ngOnInit() {
-    this.commonservice.topicDtls().subscribe((result: any) => {
-      this.dataSource=new MatTableDataSource(result);
-      // this.dataSource=new MatTableDataSource(result['topics']);
+    this.commonservice.topicDtlsnew('Angular').subscribe((result: any) => {
+      this.dataSource=new MatTableDataSource(result); // load from localhost
+      // this.dataSource=new MatTableDataSource(result['topics']);// load from github
       this.filterPredicatefunc()
     })
   }
-
+  heading:string="Angular";
+  changeSub(string:string){
+    this.heading=string;
+    this.commonservice.topicDtlsnew(string).subscribe((result: any) => {
+      this.dataSource=new MatTableDataSource(result);
+      this.filterPredicatefunc()
+    })
+  }
 
   filterPredicatefunc(){
       // For Filtering from Starting point
@@ -73,15 +80,22 @@ ngOnInit() {
   splitfunc(val:any){
     return val.split("\n")
   }
+  checkfunc(val:any){
+    if(val.includes("\n")){return true}else{return false} 
+  }
+  programfunc(val:any){
+    if(val.includes("Program") || val.includes("***")){return true}else{return false} 
+  }
 
   addTask(){
     const dialogRef = this.dialog.open(AddDataComponent, {
       width:  "75%",
-      height: "75%"  
+      height: "75%",
+      data:this.heading
     })
 
     dialogRef.afterClosed().subscribe(result1 => {
-      this.commonservice.topicDtls().subscribe((result: any) => {
+      this.commonservice.topicDtlsnew(this.heading).subscribe((result: any) => {
         this.dataSource=new MatTableDataSource(result);
         this.filterPredicatefunc()
       })

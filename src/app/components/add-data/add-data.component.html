@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add New Topic</h1>
+<h1 mat-dialog-title>Add New Topic {{heading}}</h1>
 <div mat-dialog-content>
     <form  [formGroup]="form">
     <div style="display: flex;justify-content: space-between;padding-top: 2%;">
@@ -18,6 +18,10 @@
         <mat-label>Explanation</mat-label>
         <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
+      </div>
+      <div class="container" (paste)="onPaste($event)">
+        <h1>Take a Screenshot</h1>
+        <img #imgRenderer />
       </div>
       </form>
 </div>
