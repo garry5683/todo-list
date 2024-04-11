@@ -14,18 +14,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
-import { AddpriceComponent } from './components/addprice/addprice.component';
 import { InterviewDashboardComponent } from './components/interview-dashboard/interview-dashboard.component';
-import { PriceDashboardComponent } from './components/price-dashboard/price-dashboard.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddDataComponent,
-    AddpriceComponent,
     InterviewDashboardComponent,
-    PriceDashboardComponent,
   ],
   imports: [
     BrowserModule,
