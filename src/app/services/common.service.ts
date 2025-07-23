@@ -9,23 +9,22 @@ export class CommonService {
 
   constructor(      private http: HttpClient    ) { }
 
-  topicDtls(){
-    // return this.http.get(`https://garry5683.github.io/angulad-note-db/db.json`);
-    return this.http.get(`http://localhost:3000/Angular`);
-  }
 
   topicDtlsnew(string:string){
-    // return this.http.get(`https://garry5683.github.io/angulad-note-db/db.json`);
-    return this.http.get(`http://localhost:3000/${string}`);
+    return this.http.get(`https://angulad-note-db.onrender.com/${string}`);
+    // return this.http.get(`http://localhost:3000/${string}`);
+  }
+
+
+
+  topicDtlspost(data:any,topic:string){
+    // return this.http.post(`https://angulad-note-db.onrender.com/${topic}`,data);
+    return this.http.post(`http://localhost:3000/${topic}`,data);
   }
 
   priceDtls(){
     // return this.http.get(`https://garry5683.github.io/angulad-note-db/db.json`);
     return this.http.get(`http://localhost:3000/prices`);
-  }
-
-  topicDtlspost(data:any,topic:string){
-    return this.http.post(`http://localhost:3000/${topic}`,data);
   }
   PriceDtlspost(data:any){
     return this.http.post(`http://localhost:3000/prices`,data);

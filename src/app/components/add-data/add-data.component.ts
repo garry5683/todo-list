@@ -20,7 +20,7 @@ export class AddDataComponent {
 
   form = this.formBuilder.group({
     topic: ['', Validators.required],
-    description: ['', Validators.required]
+    description: ['']
 });
 
 @ViewChild('imgRenderer')
@@ -71,9 +71,9 @@ heading:string='';
   arr:any;
   addfunc(){
     if(!!this.arr){
-      this.arr.explanation.push({"subtopic":this.form.controls.topic.value,"explanation":this.form.controls.description.value,"image":this.imgRenderer.nativeElement.src})
+      this.arr.explanation.push({"subtopic":this.form.controls.topic.value,"explanation":this.form.controls.description.value,"image":this.imgRenderer.nativeElement.src.includes("http")?"":this.imgRenderer.nativeElement.src})
     }else{
-      this.arr={"topic": this.form.controls.topic.value, "explanation":[{"subtopic":this.form.controls.topic.value,"explanation":this.form.controls.description.value,"image":this.imgRenderer.nativeElement.src}]}
+      this.arr={"topic": this.form.controls.topic.value, "explanation":[{"subtopic":this.form.controls.topic.value,"explanation":this.form.controls.description.value,"image":this.imgRenderer.nativeElement.src.includes("http")?"":this.imgRenderer.nativeElement.src}]}
     }
     this.form.reset()
     this.imgRenderer.nativeElement.src=''

@@ -16,6 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { InterviewDashboardComponent } from './components/interview-dashboard/interview-dashboard.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTableModule,
     MatInputModule,
     HttpClientModule,
+    MatSidenavModule,
     MatCardModule,
     MatDialogModule,
     MatButtonModule,

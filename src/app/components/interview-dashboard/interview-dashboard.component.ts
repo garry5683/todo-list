@@ -3,6 +3,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { CommonService } from '../../services/common.service';
 import { AddDataComponent } from '../../components/add-data/add-data.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export interface UserData {
   topic: string;
@@ -17,24 +18,36 @@ export interface UserData {
 export class InterviewDashboardComponent {
   displayedColumns: string[] = [ 'explanation'];
   dataSource = new MatTableDataSource([]);
+  tableData : any=[];
+  isMobile: boolean = false;
 
   constructor(
     private commonservice: CommonService,
     public dialog: MatDialog,
+    private sanitizer: DomSanitizer
 ) { }
 
 ngOnInit() {
+    this.isMobile = window.innerWidth <= 800;
+
     this.commonservice.topicDtlsnew('Angular').subscribe((result: any) => {
       this.dataSource=new MatTableDataSource(result); // load from localhost
+      this.tableData = result.sort((a:any, b:any) => a.topic.localeCompare(b.topic));
       // this.dataSource=new MatTableDataSource(result['topics']);// load from github
       this.filterPredicatefunc()
     })
   }
   heading:string="Angular";
+  changeSubSelector(event:any){
+    // console.log(event.target.value)
+    this.changeSub(event.target.value)
+  }
+
   changeSub(string:string){
     this.heading=string;
     this.commonservice.topicDtlsnew(string).subscribe((result: any) => {
       this.dataSource=new MatTableDataSource(result);
+      this.tableData = result.sort((a:any, b:any) => a.topic.localeCompare(b.topic));;
       this.filterPredicatefunc()
     })
   }
@@ -76,12 +89,29 @@ ngOnInit() {
     });
     this.dataSource.filter = JSON.stringify(tableFilters);
   }
+applyFilter2Select(event:any){
+      this.applyFilter2(event.target.value)
+}
+  applyFilter2(value:any) {
+    const tableFilters = [];
+    tableFilters.push({
+      id: 'topic',
+      value: value
+    });
+    this.dataSource.filter = JSON.stringify(tableFilters);
+  }
 
   splitfunc(val:any){
+    if(val==null){return []}
     return val.split("\n")
   }
   checkfunc(val:any){
+    if(val==null){return false}
     if(val.includes("\n")){return true}else{return false} 
+  }
+  nullChecker(val:any,img:any){
+    if(val==null || val==""){
+      if(img){return true}else{return false}}else{return true} 
   }
   programfunc(val:any){
     if(val.includes("Program") || val.includes("***")){return true}else{return false} 
@@ -100,6 +130,10 @@ ngOnInit() {
         this.filterPredicatefunc()
       })
     });
+  }
+    getSafe(val: string): SafeHtml {
+    const formatted = val.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+    return this.sanitizer.bypassSecurityTrustHtml(formatted);
   }
 
 }

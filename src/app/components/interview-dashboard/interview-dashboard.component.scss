@@ -3,9 +3,10 @@
     width: 100%;
   }
   
-  // .mat-column-topic {
-  //   width: 10px;
-  // }
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
   
   .mat-mdc-form-field {
     font-size: 14px;
@@ -23,11 +24,14 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  .center>button{ margin: 2%;  }  
+  .center>button{ margin: 2%; width: 200px; }  
   .end>button{  border-radius: 25px;  }
 
 .scroll{
-  height: 35em;overflow-y: scroll;
+  height: 37em;overflow-y: scroll;
+}
+.scroll1{
+  height: 45em;overflow-y: scroll;
 }
 
 // /* Hide scrollbar for Chrome, Safari and Opera */
@@ -40,3 +44,20 @@
 // -ms-overflow-style: none;  /* IE and Edge */
 // scrollbar-width: none;  /* Firefox */
 // }
+
+.fontsize{
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .select1{
+    padding: 1%;
+  border-radius: 5px;
+width:150px;
+margin-right: 2%;
+}
+
+  .select2{
+    padding: 1%;
+  border-radius: 5px;
+width:200px}

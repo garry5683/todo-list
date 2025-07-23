@@ -1,30 +1,85 @@
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <mat-card style="width: 50em;background-color: rgb(255, 255, 255);">
+<mat-toolbar color="primary" style="margin-bottom: 2%;">
+
+  <span class="example-spacer">
+
+  <select (change)="changeSubSelector($event)" class="select1" *ngIf="isMobile">
+        <option value="Angular">Angular</option>
+        <option value="Common">Common</option>
+        <option value="Program">Program</option>
+        <option value="Scenarios">Scenarios</option>
+        <option value=".NET">.NET</option>
+        <option value="SQL">SQL</option>
+        <option value="JS">JS</option>
+        <option value="Express JS">Express JS</option>
+        <option value="HTML">HTML</option>
+        <option value="CSS">CSS</option>
+        <option value="Node">Node</option>
+        <option value="React">React</option>
+        <option value="Mongodb">Mongodb</option>
+  </select>
+  <select (change)="applyFilter2Select($event)" class="select2" *ngIf="isMobile">
+        <option *ngFor="let topic of tableData" [value]="topic.topic">{{topic.topic}}</option>
+  </select>
+
+</span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+  <span>  {{heading}} </span>
+    <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+
+  <span class="example-spacer"></span>
+  <span class="example-spacer"></span>
+
+  <button mat-raised-button color="warn" (click)="addTask()">Add Topic</button>
+
+
+</mat-toolbar>
+
+<div style="display: flex; position: relative;justify-content: center;">
+
+  <div *ngIf="!isMobile">
+    <mat-card style="width: 30em;background-color: rgb(255, 255, 255);">
+      <mat-card-content>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;" class="scroll1">
+          <button mat-raised-button color="primary" *ngFor="let topic of tableData" (click)="applyFilter2(topic.topic)">
+            {{topic.topic}}
+          </button>
+        </div>
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+    <div style="margin-left: 2%;"><mat-card style="width: 50em;background-color: rgb(255, 255, 255);">
       <mat-card-content>
 
-        <h1 class="center">{{heading}}</h1>
+        <mat-form-field appearance="outline" class="white-form-field">
+          <input matInput placeholder="Search" (keyup)="applyFilter($event)" #input>
+        </mat-form-field>
 
-  
         <div class="scroll">
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="explanation">
               <td mat-cell *matCellDef="let element">
                 <h2 style="background-color: #3f51b5;color: white;text-align: center;">{{element.topic}}</h2>
                 <div *ngFor="let topic of element.explanation">
-                  <mat-card-header>
-                    <h2 *ngIf="topic.subtopic!=element.topic">{{topic.subtopic}}</h2>
+                  <mat-card-header *ngIf="topic.subtopic!=element.topic">
+                    <h2 style="color: #3f51b5">{{topic.subtopic}}</h2>
                   </mat-card-header>
-                  <mat-card-content *ngIf="checkfunc(topic.explanation) && !programfunc(topic.subtopic)">
-                    <li *ngFor="let val of splitfunc(topic.explanation)"> {{val}} </li>
-                    <div *ngIf="topic.image" style="border: 1px solid #060606;" class="center"><img width="100%" [src]="topic.image"></div>
+                  <mat-card-content class="fontsize" *ngIf="checkfunc(topic.explanation) && !programfunc(topic.subtopic)">
+                    <li *ngFor="let val of splitfunc(topic.explanation)" [innerHTML]="getSafe(val)"></li>
+                    <!-- <pre style="white-space: pre-wrap; text-align: justify;  font-family: 'Roboto', sans-serif;" *ngFor="let val of splitfunc(topic.explanation)" [innerHTML]="getSafe(val)"></pre> -->
+                    <div *ngIf="topic.image" class="center"><img width="100%" [src]="topic.image"></div>
                   </mat-card-content>
-                  <mat-card-content *ngIf="checkfunc(topic.explanation) && programfunc(topic.subtopic)">
-                    <pre style="white-space: pre-wrap; text-align: justify;" *ngFor="let val of splitfunc(topic.explanation)"> {{val}} </pre>
-                    <div *ngIf="topic.image" style="border: 1px solid #060606;" class="center"><img width="100%" [src]="topic.image"></div>
+                  <mat-card-content class="fontsize" *ngIf="checkfunc(topic.explanation) && programfunc(topic.subtopic)">
+                    <pre style="white-space: pre-wrap; text-align: justify;  font-family: 'Roboto', sans-serif;" *ngFor="let val of splitfunc(topic.explanation)" [innerHTML]="getSafe(val)"></pre>
+                    <div *ngIf="topic.image" class="center"><img width="100%" [src]="topic.image"></div>
                   </mat-card-content>
-                  <mat-card-content *ngIf="!checkfunc(topic.explanation)">
-                    <p *ngFor="let val of splitfunc(topic.explanation)"> {{val}} </p>
-                    <div *ngIf="topic.image" style="border: 1px solid #060606;" class="center"><img width="100%" [src]="topic.image"></div>
+                  <mat-card-content class="fontsize" *ngIf="!checkfunc(topic.explanation) && nullChecker(topic.explanation,topic.image)">
+                    <p *ngFor="let val of splitfunc(topic.explanation)" [innerHTML]="getSafe(val)"></p>
+                    <div *ngIf="topic.image" class="center"><img width="100%" [src]="topic.image"></div>
                   </mat-card-content>
                 </div>
               </td>
@@ -38,30 +93,36 @@
         </div>
   
         
-        <mat-form-field appearance="outline">
-          <mat-label>Search</mat-label>
-          <input matInput (keyup)="applyFilter($event)" #input>
-        </mat-form-field>
 
-        <div class="end">
-          <button mat-raised-button color="primary" (click)="addTask()">Add Topic</button>
-        </div>
-        
-        <div class="center">
-          <button mat-raised-button color="primary" (click)="changeSub('Angular')">Angular</button>
-          <!-- <button mat-raised-button color="primary" (click)="changeSub('Mongodb')">Mongodb</button> -->
-          <!-- <button mat-raised-button color="primary" (click)="changeSub('React')">React</button> -->
-          <!-- <button mat-raised-button color="primary" (click)="changeSub('Node')">Node</button> -->
-          <!-- <button mat-raised-button color="primary" (click)="changeSub('Express JS')">Express JS</button> -->
-          <button mat-raised-button color="primary" (click)="changeSub('HTML')">HTML</button>
-          <button mat-raised-button color="primary" (click)="changeSub('CSS')">CSS</button>
-          <button mat-raised-button color="primary" (click)="changeSub('Program')">Program</button>
-
-        </div>
 
 
 
   
       </mat-card-content>
+
     </mat-card>
+  </div>
+
+
+      <div style="margin-left: 2%;" *ngIf="!isMobile">
+        <mat-card style="width: 20em;background-color: rgb(255, 255, 255);">
+          <mat-card-content>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;" class="scroll1">
+                <button mat-raised-button color="primary" (click)="changeSub('Common')">Common</button>
+                <button mat-raised-button color="primary" (click)="changeSub('Angular')">Angular</button>
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('Mongodb')">Mongodb</button> -->
+                <button mat-raised-button color="primary" (click)="changeSub('React')">React</button>
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('Node')">Node</button> -->
+                <button mat-raised-button color="primary" (click)="changeSub('.NET')">.NET</button>
+                <button mat-raised-button color="primary" (click)="changeSub('SQL')">SQL</button>
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('JS')">JS</button> -->
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('Express JS')">Express JS</button> -->
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('HTML')">HTML</button> -->
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('CSS')">CSS</button> -->
+                <button mat-raised-button color="primary" (click)="changeSub('Program')">Program</button>
+                <button mat-raised-button color="primary" (click)="changeSub('Scenarios')">Scenarios</button>
+            </div>            
+          </mat-card-content>
+        </mat-card>
+      </div>
   </div>
