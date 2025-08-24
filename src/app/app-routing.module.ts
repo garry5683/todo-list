@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InterviewDashboardComponent } from './components/interview-dashboard/interview-dashboard.component';
+import { VoterSearchComponent } from './components/voter-search/voter-search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/interview', pathMatch: 'full' },
@@ -8,10 +9,10 @@ const routes: Routes = [
     path: 'interview',
     component: InterviewDashboardComponent
   },
-  // {
-  //   path: 'price',
-  //   component: PriceDashboardComponent
-  // },
+  {
+    path: 'voter-search',
+    component: VoterSearchComponent
+  },
 ];
 
 @NgModule({

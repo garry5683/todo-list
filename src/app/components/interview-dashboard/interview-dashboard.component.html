@@ -59,7 +59,7 @@
           <input matInput placeholder="Search" (keyup)="applyFilter($event)" #input>
         </mat-form-field>
 
-        <div class="scroll">
+        <div [ngClass]="isMobile ? 'mobile-scroll' : 'desktop-scroll'">
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="explanation">
               <td mat-cell *matCellDef="let element">
@@ -110,16 +110,17 @@
             <div style="display: flex; flex-wrap: wrap; gap: 10px;" class="scroll1">
                 <button mat-raised-button color="primary" (click)="changeSub('Common')">Common</button>
                 <button mat-raised-button color="primary" (click)="changeSub('Angular')">Angular</button>
+                <button mat-raised-button color="primary" (click)="changeSub('Program')">Program</button>
                 <!-- <button mat-raised-button color="primary" (click)="changeSub('Mongodb')">Mongodb</button> -->
-                <button mat-raised-button color="primary" (click)="changeSub('React')">React</button>
+                <!-- <button mat-raised-button color="primary" (click)="changeSub('React')">React</button> -->
                 <!-- <button mat-raised-button color="primary" (click)="changeSub('Node')">Node</button> -->
                 <button mat-raised-button color="primary" (click)="changeSub('.NET')">.NET</button>
+                <button mat-raised-button color="primary" (click)="changeSub('Program-.net')">Program .NET</button>
                 <button mat-raised-button color="primary" (click)="changeSub('SQL')">SQL</button>
                 <!-- <button mat-raised-button color="primary" (click)="changeSub('JS')">JS</button> -->
                 <!-- <button mat-raised-button color="primary" (click)="changeSub('Express JS')">Express JS</button> -->
                 <!-- <button mat-raised-button color="primary" (click)="changeSub('HTML')">HTML</button> -->
                 <!-- <button mat-raised-button color="primary" (click)="changeSub('CSS')">CSS</button> -->
-                <button mat-raised-button color="primary" (click)="changeSub('Program')">Program</button>
                 <button mat-raised-button color="primary" (click)="changeSub('Scenarios')">Scenarios</button>
             </div>            
           </mat-card-content>

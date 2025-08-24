@@ -1,0 +1,13 @@
+<table class="custom-table" *ngFor="let totOut of output; let i = index">
+  <caption class="left-caption"><h2>List {{ i + 1 }}</h2></caption>
+  <thead>
+    <tr>
+      <th *ngFor="let header of header">{{ header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of totOut">
+      <td *ngFor="let header of header">{{ row[header] }}</td>
+    </tr>
+  </tbody>
+</table>

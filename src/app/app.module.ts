@@ -17,6 +17,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { InterviewDashboardComponent } from './components/interview-dashboard/interview-dashboard.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { VoterSearchComponent } from './components/voter-search/voter-search.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AppComponent,
     AddDataComponent,
     InterviewDashboardComponent,
+    VoterSearchComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class CommonService {
 
 
   topicDtlsnew(string:string){
-    return this.http.get(`https://angulad-note-db.onrender.com/${string}`);
-    // return this.http.get(`http://localhost:3000/${string}`);
+    // return this.http.get(`https://angulad-note-db.onrender.com/${string}`);
+    return this.http.get(`http://localhost:3000/${string}`);
   }
 
 
@@ -29,4 +29,18 @@ export class CommonService {
   PriceDtlspost(data:any){
     return this.http.post(`http://localhost:3000/prices`,data);
   }
+
+  voterSearch (query: string): Observable<any> {
+    const body = `form[query]=${encodeURIComponent(query)}`;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      'X-Requested-With': 'XMLHttpRequest',
+      'Referer': 'https://www.sec.kerala.gov.in/rfs/search/index'
+    });
+
+    return this.http.post(this.apiUrl, body, { headers });
+  }
+
+  apiUrl=`/rfs/search/index`
 }

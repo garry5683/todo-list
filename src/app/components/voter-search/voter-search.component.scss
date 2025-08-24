@@ -1,0 +1,71 @@
+.left-caption {
+  caption-side: top;   /* keep it at the top (default) */
+  text-align: left;    /* 👈 align text to the left */
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 👈 ensures fixed-width columns */
+  margin-bottom: 20px;         /* Space between tables */
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  word-wrap: break-word; /* 👈 handles overflow text */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 👈 shows "..." for long text */
+}
+
+.custom-table th:nth-child(1),
+.custom-table td:nth-child(1) {
+  width: 10px; /* Example: first column fixed */
+}
+
+.custom-table th:nth-child(2),
+.custom-table td:nth-child(2) {
+  width: 25px; /* Example: second column fixed */
+}
+
+.custom-table th:nth-child(3),
+.custom-table td:nth-child(3) {
+  width: 75px; /* Example: third column fixed */
+}
+
+.custom-table th:nth-child(4),
+.custom-table td:nth-child(4) {
+  width: 100px; /* Example: third column fixed */
+}
+
+.custom-table th:nth-child(5),
+.custom-table td:nth-child(5) {
+  width: 120px; /* Example: third column fixed */
+}
+.custom-table th:nth-child(6),
+.custom-table td:nth-child(6) {
+  width: 200px; /* Example: third column fixed */
+}
+.custom-table th:nth-child(7),
+.custom-table td:nth-child(7) {
+  width: 100px; /* Example: third column fixed */
+}
+.custom-table th:nth-child(8),
+.custom-table td:nth-child(8) {
+  width: 150px; /* Example: third column fixed */
+}
+.custom-table th:nth-child(9),
+.custom-table td:nth-child(9) {
+  width: 25px; /* Example: third column fixed */
+}
+.custom-table th:nth-child(10),
+.custom-table td:nth-child(10) {
+  width: 25px; /* Example: third column fixed */
+}
+.custom-table th:nth-child(11),
+.custom-table td:nth-child(11) {
+  width: 100px; /* Example: third column fixed */
+}
+/* Apply for more columns depending on your headers */

@@ -27,8 +27,11 @@
   .center>button{ margin: 2%; width: 200px; }  
   .end>button{  border-radius: 25px;  }
 
-.scroll{
+.desktop-scroll{
   height: 37em;overflow-y: scroll;
+}
+.mobile-scroll{
+  height: 100vh;overflow-y: scroll;
 }
 .scroll1{
   height: 45em;overflow-y: scroll;

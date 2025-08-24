@@ -1,0 +1,8 @@
+{
+  "/rfs": {
+    "target": "https://www.sec.kerala.gov.in",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
